@@ -1,0 +1,14 @@
+{
+  "name": "random-palette",
+   "scripts": {
+    "test": "mocha backend/tests",
+    "install-all": "concurrently \"npm install\" \"cd frontend && npm install\"",
+    "client": "cd frontend && npm start",
+    "server": "nodemon backend/src/server.js",
+    "dev": "concurrently \"nodemon backend/src/server.js\" \"cd frontend && npm run start\"",
+    "build": "cd frontend && npm build",
+    "start": "node backend/src/server.js",
+    "heroku-postbuild": "cd frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "author": "Ike Holzmann"
+}
