@@ -1,27 +1,20 @@
-require('dotenv/config')
+require('dotenv').config({ path: '../.env' })
 const express = require('express')
 const bodyParser = require('body-parser')
-
-// Set App Variable
 const app = express()
 
-// Use Body Parser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use((req, res, next) => {
-    const now = new Date().toString()
-    console.log(`Requested ${req.url} at ${now}`)
-    next()
-})
+const randomController = require('./controllers/random');
 
-// Routes
-const router = require('./routes/index.js')
-app.use(router)
+app.get('/random', randomController.getRandomHSL);
+app.get('/random/:HEX', randomController.getRandomHSLfromHEX);
 
-// Start Server
+console.log(process.env.PORT);
+
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}!`)
-})
+});
 
 module.exports = app
