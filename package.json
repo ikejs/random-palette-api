@@ -1,6 +1,7 @@
 {
   "name": "random-palette",
-   "scripts": {
+  "license": "MIT",
+  "scripts": {
     "test": "mocha backend/tests",
     "install-all": "concurrently \"npm install\" \"cd frontend && npm install\"",
     "client": "cd frontend && npm start",
