@@ -1,3 +1,6 @@
+const hsl = require('hsl-to-hex');
+
+
 exports.getRandomHSL = ((req, res) => {
   // base color
   const h = Math.round(Math.random() * 360)
@@ -11,11 +14,26 @@ exports.getRandomHSL = ((req, res) => {
   const h3 = (h + 340) % 360
 
   res.json({
-    first: `hsl(${h1}, ${s}%, ${l}%)`,
-    second: `hsl(${h2}, ${s}%, ${l}%)`,
-    third: `hsl(${h}, ${s}%, ${l}%)`,
-    fourth: `hsl(${h3}, ${s}%, ${l}%)`,
-    fifth: `hsl(${h4}, ${s}%, ${l}%)`
+    first: {
+      hsl: `hsl(${h1}, ${s}%, ${l}%)`,
+      hex: hsl(h1, s, l)
+    },
+    second: {
+      hsl: `hsl(${h2}, ${s}%, ${l}%)`,
+      hex: hsl(h2, s, l)
+    },
+    third: {
+      hsl: `hsl(${h}, ${s}%, ${l}%)`,
+      hex: hsl(h, s, l)
+    },
+    fourth: {
+      hsl: `hsl(${h3}, ${s}%, ${l}%)`,
+      hex: hsl(h3, s, l)
+    },
+    fifth: {
+      hsl: `hsl(${h4}, ${s}%, ${l}%)`,
+      hex: hsl(h4, s, l)
+    }
   });
 });
 
